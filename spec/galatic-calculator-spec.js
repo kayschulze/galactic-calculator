@@ -40,7 +40,32 @@ describe("GalacticCalculator", function() {
 
     let seconds = (Date.now() - birthday.getTime()) * 0.001;
     let resultDays = Math.floor(seconds / 86400);
+    // resultDays = resultDays.toFixed(2);
 
     expect(human.calculateDays()).toEqual(resultDays);
+  });
+
+  it('should calculate an age based on mercury, venus, mars, and jupiter years', function() {
+    let day = 7;
+    let month = 7;
+    let year = 1978;
+    let birthday = new Date();
+    birthday.setDate(day);
+    birthday.setMonth(month);
+    birthday.setFullYear(year);
+    let human = new GalacticCalculator(birthday);
+
+    let expectedMercuryYears = (human.calculateDays() / 365.25 / 0.24).toFixed(1);
+    let expectedVenusYears = (human.calculateDays() / 365.25 / 0.62).toFixed(1);
+    let expectedMarsYears = (human.calculateDays() / 365.25 / 1.88).toFixed(1);
+    let expectedJupiterYears = (human.calculateDays() / 365.25 / 11.86).toFixed(1);
+
+    let expectedPlanetYears = [];
+    expectedPlanetYears.push(expectedMercuryYears);
+    expectedPlanetYears.push(expectedVenusYears);
+    expectedPlanetYears.push(expectedMarsYears);
+    expectedPlanetYears.push(expectedJupiterYears);
+
+    expect(human.getPlanetYearsArray()).toEqual(expectedPlanetYears);
   });
 });

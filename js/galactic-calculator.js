@@ -8,6 +8,15 @@ export class GalacticCalculator {
     //this.birthtime = birthtime;
   }
 
+//Calculate seconds of life
+  calculateSeconds() {
+    const millisecondsToSeconds = 0.001;
+    let totalmilliseconds = Date.now() - this.birthday.getTime();
+    this.secondsCount = totalmilliseconds * millisecondsToSeconds;
+
+    return this.secondsCount;
+  }
+
 //Calculate days of life
   calculateDays() {
     const secondsInADay = 86400;
@@ -18,13 +27,12 @@ export class GalacticCalculator {
     return this.daysCount;
   }
 
-//Calculate seconds of life
-  calculateSeconds() {
-    const millisecondsToSeconds = 0.001;
-    let totalmilliseconds = Date.now() - this.birthday.getTime();
-    this.secondsCount = totalmilliseconds * millisecondsToSeconds;
+//Calculate years based on specific planets
+  calculatePlanetYears(planetFactor) {
+    let planetYears = this.earthYears / planetFactor;
+    planetYears = planetYears.toFixed(1);
 
-    return this.secondsCount;
+    return planetYears;
   }
 
 //Calculate earth years
@@ -36,11 +44,20 @@ export class GalacticCalculator {
     return this.earthYears;
   }
 
-//Calculate years based on specific planets
-  calculatePlanetYears(planetFactor) {
-    let planetYears = this.earthYears / planetFactor;
-    planetYears = planetYears.toFixed(2);
+//Calculate an array of planet years
+  getPlanetYearsArray() {
+    let planetYearsArray = [];
+    this.calculateEarthYears();
+    const mercuryFactor = 0.24;
+    const venusFactor = 0.62;
+    const marsFactor = 1.88;
+    const jupiterFactor = 11.86;
 
-    return planetYears;
+    planetYearsArray.push(this.calculatePlanetYears(mercuryFactor));
+    planetYearsArray.push(this.calculatePlanetYears(venusFactor));
+    planetYearsArray.push(this.calculatePlanetYears(marsFactor));
+    planetYearsArray.push(this.calculatePlanetYears(jupiterFactor));
+
+    return planetYearsArray;
   }
 }
