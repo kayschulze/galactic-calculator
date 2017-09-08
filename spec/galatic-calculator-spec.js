@@ -79,14 +79,23 @@ describe("GalacticCalculator", function() {
     birthday.setFullYear(year);
     let human = new GalacticCalculator(birthday);
 
-    let unitedStatesList = [];
-    let earthTimeLeft = 79.8 - human.calculateEarthYears();
-    unitedStatesList.push(earthTimeLeft);
-    unitedStatesList.push(earthTimeLeft / 0.24);
-    unitedStatesList.push(earthTimeLeft / 0.62);
-    unitedStatesList.push(earthTimeLeft / 1.88);
-    unitedStatesList.push(earthTimeLeft / 11.86);
+    let unitedStatesList = []
+    let earthTimeLeftUS = 79.8 - human.calculateEarthYears();
+    unitedStatesList.push(earthTimeLeftUS);
+    unitedStatesList.push(earthTimeLeftUS / 0.24);
+    unitedStatesList.push(earthTimeLeftUS / 0.62);
+    unitedStatesList.push(earthTimeLeftUS / 1.88);
+    unitedStatesList.push(earthTimeLeftUS / 11.86);
 
-    expect(human.lifeExpectancyByACountryList()).toEqual(unitedStatesList);
+    let monocoList = []
+    let earthTimeLeftMonoco = 89.50 - human.calculateEarthYears();
+    monocoList.push(earthTimeLeftMonoco);
+    monocoList.push(earthTimeLeftMonoco / 0.24);
+    monocoList.push(earthTimeLeftMonoco / 0.62);
+    monocoList.push(earthTimeLeftMonoco / 1.88);
+    monocoList.push(earthTimeLeftMonoco / 11.86);
+
+    expect(human.lifeExpectancyByACountryList()[0]).toEqual(unitedStatesList);
+    expect(human.lifeExpectancyByACountryList()[1]).toEqual(monocoList);
   });
 });

@@ -5,7 +5,6 @@ export class GalacticCalculator {
     this.secondsCount = 0;
     this.daysCount = 0;
     this.earthYears = 0;
-    //this.birthtime = birthtime;
   }
 
   // Set year-length factors for each planet.
@@ -73,11 +72,29 @@ export class GalacticCalculator {
   }
 
   lifeExpectancyByACountryList() {
+    let yearsLeftbyCountryList = [];
     const unitedStatesExpectancy = 79.80;
-    this.calculateEarthYears();
-    let unitedStatesYearsLeft = this.lifeExpectancyByPlanetList(unitedStatesExpectancy);
+    const monocoExpectancy = 89.50;
+    const icelandExpectancy = 83.00;
+    const israelExpectancy = 82.40;
+    const italyExpectancy = 82.20;
+    const canadaExpectancy = 81.90;
+    const dominicanExpectancy = 38.93;
+    const egyptExpectancy = 33.53;
+    const guatemalaExpectancy = 33.13;
 
-    return unitedStatesYearsLeft;
+    this.calculateEarthYears();
+    yearsLeftbyCountryList.push(this.lifeExpectancyByPlanetList(unitedStatesExpectancy));
+    yearsLeftbyCountryList.push(this.lifeExpectancyByPlanetList(monocoExpectancy));
+    yearsLeftbyCountryList.push(this.lifeExpectancyByPlanetList(icelandExpectancy));
+    yearsLeftbyCountryList.push(this.lifeExpectancyByPlanetList(israelExpectancy));
+    yearsLeftbyCountryList.push(this.lifeExpectancyByPlanetList(italyExpectancy));
+    yearsLeftbyCountryList.push(this.lifeExpectancyByPlanetList(canadaExpectancy));
+    yearsLeftbyCountryList.push(this.lifeExpectancyByPlanetList(dominicanExpectancy));
+    yearsLeftbyCountryList.push(this.lifeExpectancyByPlanetList(egyptExpectancy));
+    yearsLeftbyCountryList.push(this.lifeExpectancyByPlanetList(guatemalaExpectancy));
+
+    return yearsLeftbyCountryList;
   }
 
 //Calculate an array of planet years
