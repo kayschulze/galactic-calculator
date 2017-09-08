@@ -8,7 +8,35 @@ export class GalacticCalculator {
     //this.birthtime = birthtime;
   }
 
-//Calculate seconds of life
+  // Set year-length factors for each planet.
+  // const earthFactor = 1;
+  // const mercuryFactor = 0.24;
+  // const venusFactor = 0.62;
+  // const marsFactor = 1.88;
+  // const jupiterFactor = 11.86;
+
+  determineLifeExpectancy(countryExpectancy, factor) {
+    return (countryExpectancy - this.earthYears) / factor;
+  }
+
+  lifeExpectancyByPlanetList(countryExpectancy) {
+    let expectancyByPlanet = [];
+    const earthFactor = 1;
+    const mercuryFactor = 0.24;
+    const venusFactor = 0.62;
+    const marsFactor = 1.88;
+    const jupiterFactor = 11.86;
+
+    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, earthFactor));
+    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, mercuryFactor));
+    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, venusFactor));
+    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, marsFactor));
+    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, jupiterFactor));
+
+    return expectancyByPlanet;
+  }
+
+//Calculate seconds of life.
   calculateSeconds() {
     const millisecondsToSeconds = 0.001;
     let totalmilliseconds = Date.now() - this.birthday.getTime();
@@ -17,7 +45,7 @@ export class GalacticCalculator {
     return this.secondsCount;
   }
 
-//Calculate days of life
+//Calculate days of life.
   calculateDays() {
     const secondsInADay = 86400;
     let seconds = this.calculateSeconds();
@@ -44,14 +72,23 @@ export class GalacticCalculator {
     return this.earthYears;
   }
 
+  lifeExpectancyByACountryList() {
+    const unitedStatesExpectancy = 79.80;
+    this.calculateEarthYears();
+    let unitedStatesYearsLeft = this.lifeExpectancyByPlanetList(unitedStatesExpectancy);
+
+    return unitedStatesYearsLeft;
+  }
+
 //Calculate an array of planet years
   getPlanetYearsArray() {
     let planetYearsArray = [];
-    this.calculateEarthYears();
+    const earthFactor = 1;
     const mercuryFactor = 0.24;
     const venusFactor = 0.62;
     const marsFactor = 1.88;
     const jupiterFactor = 11.86;
+    this.calculateEarthYears();
 
     planetYearsArray.push(this.calculatePlanetYears(mercuryFactor));
     planetYearsArray.push(this.calculatePlanetYears(venusFactor));

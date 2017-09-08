@@ -68,4 +68,25 @@ describe("GalacticCalculator", function() {
 
     expect(human.getPlanetYearsArray()).toEqual(expectedPlanetYears);
   });
+
+  it('should calculate the number of years a person has left living in the US', function() {
+    let day = 7;
+    let month = 7;
+    let year = 1978;
+    let birthday = new Date();
+    birthday.setDate(day);
+    birthday.setMonth(month);
+    birthday.setFullYear(year);
+    let human = new GalacticCalculator(birthday);
+
+    let unitedStatesList = [];
+    let earthTimeLeft = 79.8 - human.calculateEarthYears();
+    unitedStatesList.push(earthTimeLeft);
+    unitedStatesList.push(earthTimeLeft / 0.24);
+    unitedStatesList.push(earthTimeLeft / 0.62);
+    unitedStatesList.push(earthTimeLeft / 1.88);
+    unitedStatesList.push(earthTimeLeft / 11.86);
+
+    expect(human.lifeExpectancyByACountryList()).toEqual(unitedStatesList);
+  });
 });
