@@ -7,15 +7,15 @@ export class GalacticCalculator {
     this.earthYears = 0;
   }
 
-  // Set year-length factors for each planet.
-  // const earthFactor = 1;
-  // const mercuryFactor = 0.24;
-  // const venusFactor = 0.62;
-  // const marsFactor = 1.88;
-  // const jupiterFactor = 11.86;
-
   determineLifeExpectancy(countryExpectancy, factor) {
-    return (countryExpectancy - this.earthYears) / factor;
+    let expectancy = (countryExpectancy - this.earthYears) / factor;
+
+    if (expectancy > 0) {
+      return expectancy.toFixed(2);
+    }
+    else {
+      return "Livin' On Borrowed Time."
+    }
   }
 
   lifeExpectancyByPlanetList(countryExpectancy) {
@@ -26,11 +26,11 @@ export class GalacticCalculator {
     const marsFactor = 1.88;
     const jupiterFactor = 11.86;
 
-    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, earthFactor));
-    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, mercuryFactor));
-    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, venusFactor));
-    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, marsFactor));
-    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, jupiterFactor));
+    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, earthFactor)).toFixed(2);
+    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, mercuryFactor)).toFixed(2);
+    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, venusFactor)).toFixed(2);
+    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, marsFactor)).toFixed(2);
+    expectancyByPlanet.push(this.determineLifeExpectancy(countryExpectancy, jupiterFactor)).toFixed(2);
 
     return expectancyByPlanet;
   }
@@ -57,7 +57,7 @@ export class GalacticCalculator {
 //Calculate years based on specific planets
   calculatePlanetYears(planetFactor) {
     let planetYears = this.earthYears / planetFactor;
-    planetYears = planetYears.toFixed(1);
+    planetYears = planetYears.toFixed(2);
 
     return planetYears;
   }
@@ -79,9 +79,9 @@ export class GalacticCalculator {
     const israelExpectancy = 82.40;
     const italyExpectancy = 82.20;
     const canadaExpectancy = 81.90;
-    const dominicanExpectancy = 38.93;
-    const egyptExpectancy = 33.53;
-    const guatemalaExpectancy = 33.13;
+    const dominicanExpectancy = 78.10;
+    const egyptExpectancy = 72.70;
+    const guatemalaExpectancy = 72.30;
 
     this.calculateEarthYears();
     yearsLeftbyCountryList.push(this.lifeExpectancyByPlanetList(unitedStatesExpectancy));

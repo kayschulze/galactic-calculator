@@ -55,10 +55,11 @@ describe("GalacticCalculator", function() {
     birthday.setFullYear(year);
     let human = new GalacticCalculator(birthday);
 
-    let expectedMercuryYears = (human.calculateDays() / 365.25 / 0.24).toFixed(1);
-    let expectedVenusYears = (human.calculateDays() / 365.25 / 0.62).toFixed(1);
-    let expectedMarsYears = (human.calculateDays() / 365.25 / 1.88).toFixed(1);
-    let expectedJupiterYears = (human.calculateDays() / 365.25 / 11.86).toFixed(1);
+    let years = (human.calculateDays() / 365.25).toFixed(2);
+    let expectedMercuryYears = (years / 0.24).toFixed(2);
+    let expectedVenusYears = (years / 0.62).toFixed(2);
+    let expectedMarsYears = (years / 1.88).toFixed(2);
+    let expectedJupiterYears = (years / 11.86).toFixed(2);
 
     let expectedPlanetYears = [];
     expectedPlanetYears.push(expectedMercuryYears);
@@ -81,19 +82,19 @@ describe("GalacticCalculator", function() {
 
     let unitedStatesList = []
     let earthTimeLeftUS = 79.8 - human.calculateEarthYears();
-    unitedStatesList.push(earthTimeLeftUS);
-    unitedStatesList.push(earthTimeLeftUS / 0.24);
-    unitedStatesList.push(earthTimeLeftUS / 0.62);
-    unitedStatesList.push(earthTimeLeftUS / 1.88);
-    unitedStatesList.push(earthTimeLeftUS / 11.86);
+    unitedStatesList.push((earthTimeLeftUS).toFixed(2));
+    unitedStatesList.push((earthTimeLeftUS / 0.24).toFixed(2));
+    unitedStatesList.push((earthTimeLeftUS / 0.62).toFixed(2));
+    unitedStatesList.push((earthTimeLeftUS / 1.88).toFixed(2));
+    unitedStatesList.push((earthTimeLeftUS / 11.86).toFixed(2));
 
     let monocoList = []
     let earthTimeLeftMonoco = 89.50 - human.calculateEarthYears();
-    monocoList.push(earthTimeLeftMonoco);
-    monocoList.push(earthTimeLeftMonoco / 0.24);
-    monocoList.push(earthTimeLeftMonoco / 0.62);
-    monocoList.push(earthTimeLeftMonoco / 1.88);
-    monocoList.push(earthTimeLeftMonoco / 11.86);
+    monocoList.push((earthTimeLeftMonoco.toFixed(2)));
+    monocoList.push((earthTimeLeftMonoco / 0.24).toFixed(2));
+    monocoList.push((earthTimeLeftMonoco / 0.62).toFixed(2));
+    monocoList.push((earthTimeLeftMonoco / 1.88).toFixed(2));
+    monocoList.push((earthTimeLeftMonoco / 11.86).toFixed(2));
 
     expect(human.lifeExpectancyByACountryList()[0]).toEqual(unitedStatesList);
     expect(human.lifeExpectancyByACountryList()[1]).toEqual(monocoList);
