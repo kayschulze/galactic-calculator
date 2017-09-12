@@ -1,0 +1,18 @@
+body {
+  background-image: url("https://cdn.spacetelescope.org/archives/images/wallpaper2/heic1509a.jpg");
+  /*background-color: skyblue;*/
+  font-size: 20px;
+  font-family: 'Margarine', cursive;
+}
+
+button {
+  background-color: orange;
+  border-radius: 5px;
+  height: 55px;
+}
+
+.calculator {
+  background-color: skyblue;
+  border-radius: 50px;
+  padding: 50px;
+}
