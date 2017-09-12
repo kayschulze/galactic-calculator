@@ -1,43 +1,23 @@
 import { GalacticCalculator } from "./../js/galactic-calculator.js";
 
+let day = 7;
+let month = 7;
+let year = 1978;
+let birthday = new Date();
+birthday.setDate(day);
+birthday.setMonth(month);
+birthday.setFullYear(year);
+let human = new GalacticCalculator(birthday);
+
 describe("GalacticCalculator", function() {
-  // let day = 7;
-  // let month = 7;
-  // let year = 1978;
-  // let birthday = new Date();
-  // birthday.setDate(day);
-  // birthday.setMonth(month);
-  // birthday.setFullYear(year);
-  //
-  // beforeEach(function() {
-  //   human = new GalacticCalculator(birthday);
-  // });
 
   it('should find the number of seconds between a date and now', function() {
-    let day = 7;
-    let month = 7;
-    let year = 1978;
-    let birthday = new Date();
-    birthday.setDate(day);
-    birthday.setMonth(month);
-    birthday.setFullYear(year);
-    let human = new GalacticCalculator(birthday);
-
     let resultSeconds = (Date.now() - birthday.getTime()) * 0.001;
 
     expect(human.calculateSeconds()).toEqual(resultSeconds);
   });
 
   it('should calculate the number of days of a life', function() {
-    let day = 7;
-    let month = 7;
-    let year = 1978;
-    let birthday = new Date();
-    birthday.setDate(day);
-    birthday.setMonth(month);
-    birthday.setFullYear(year);
-    let human = new GalacticCalculator(birthday);
-
     let seconds = (Date.now() - birthday.getTime()) * 0.001;
     let resultDays = Math.floor(seconds / 86400);
     // resultDays = resultDays.toFixed(2);
@@ -46,15 +26,6 @@ describe("GalacticCalculator", function() {
   });
 
   it('should calculate an age based on mercury, venus, mars, and jupiter years', function() {
-    let day = 7;
-    let month = 7;
-    let year = 1978;
-    let birthday = new Date();
-    birthday.setDate(day);
-    birthday.setMonth(month);
-    birthday.setFullYear(year);
-    let human = new GalacticCalculator(birthday);
-
     let years = (human.calculateDays() / 365.25).toFixed(2);
     let expectedMercuryYears = (years / 0.24).toFixed(2);
     let expectedVenusYears = (years / 0.62).toFixed(2);
@@ -71,15 +42,6 @@ describe("GalacticCalculator", function() {
   });
 
   it('should calculate the number of years a person has left living in the US', function() {
-    let day = 7;
-    let month = 7;
-    let year = 1978;
-    let birthday = new Date();
-    birthday.setDate(day);
-    birthday.setMonth(month);
-    birthday.setFullYear(year);
-    let human = new GalacticCalculator(birthday);
-
     let unitedStatesList = []
     let earthTimeLeftUS = 79.8 - human.calculateEarthYears();
     unitedStatesList.push((earthTimeLeftUS).toFixed(2));
